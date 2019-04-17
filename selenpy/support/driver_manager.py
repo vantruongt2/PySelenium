@@ -1,5 +1,5 @@
-from core.support.browsers import BrowserName
-from core.browser.chrome import ChromeDriver
+from selenpy.support.browsers import BrowserName
+from selenpy.browser.chrome import ChromeDriver
 
 
 class DriverManager():

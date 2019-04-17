@@ -1,4 +1,4 @@
-from core.element.base_element import BaseElement
+from selenpy.element.base_element import BaseElement
 
 
 class TextBox(BaseElement):

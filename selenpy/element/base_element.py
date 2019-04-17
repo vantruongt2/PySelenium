@@ -1,4 +1,4 @@
-from core.support.factory import _get_shared_driver 
+from selenpy.support import browser 
 
 
 class BaseElement():
@@ -45,17 +45,17 @@ class BaseElement():
         return min(locator.find('='), locator.find(':'))
     
     def _find_by_id(self, criteria):
-        return _get_shared_driver().find_element_by_id(criteria)
+        return browser.driver().find_element_by_id(criteria)
     
     def _find_by_name(self, criteria):
-        return _get_shared_driver().find_element_by_name(criteria)
+        return browser.driver().find_element_by_name(criteria)
     
     def _find_by_xpath(self, criteria):
-        return _get_shared_driver().find_element_by_xpath(criteria)
+        return browser.driver().find_element_by_xpath(criteria)
     
     def _find_by_css_selector(self, criteria):
-        return _get_shared_driver().find_element_by_css_selector(criteria)
+        return browser.driver().find_element_by_css_selector(criteria)
     
     def _find_by_class_name(self, criteria):
-        return _get_shared_driver().find_element_by_class_name(criteria)
+        return browser.driver().find_element_by_class_name(criteria)
    

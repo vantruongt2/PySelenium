@@ -1,17 +1,17 @@
 import unittest
 import pytest
 
-from core.support.factory import start_driver, maximize_browser, close_all_browsers, navigate
+from selenpy.support import browser
 
 
 class TestBase(unittest.TestCase):
     
     @pytest.fixture(scope="session", autouse=True)
     def setup(self):        
-        start_driver("chrome")
-        maximize_browser()
-        navigate("https://google.com")    
+        browser.start_driver("chrome")
+        browser.maximize_browser()
+        browser.open_url("https://google.com")    
         
         # Close all browsers when tests have been finished
         yield        
-        close_all_browsers()        
+        browser.quit_all_browsers()        

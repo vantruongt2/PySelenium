@@ -1,4 +1,4 @@
-from core.element.text_box import TextBox
+from selenpy.element.text_box import TextBox
 
 
 class GoogleHomePage():
