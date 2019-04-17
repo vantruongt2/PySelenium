@@ -1,5 +1,5 @@
-from support.browsers import BrowserName
-from browser.chrome import ChromeDriver
+from core.support.browsers import BrowserName
+from core.browser.chrome import ChromeDriver
 
 
 class DriverManager():

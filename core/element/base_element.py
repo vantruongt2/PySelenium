@@ -1,4 +1,4 @@
-from support.factory import _get_shared_driver 
+from core.support.factory import _get_shared_driver 
 
 
 class BaseElement():

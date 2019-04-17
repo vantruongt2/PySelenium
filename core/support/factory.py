@@ -1,5 +1,5 @@
-from support.driver_manager import DriverManager
-from support.driver import SharedWebDriver
+from core.support.driver_manager import DriverManager
+from core.support.driver import SharedWebDriver
 
 __driver = {}
 __shared_web_driver = None

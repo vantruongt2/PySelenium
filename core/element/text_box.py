@@ -1,4 +1,4 @@
-from element.base_element import BaseElement
+from core.element.base_element import BaseElement
 
 
 class TextBox(BaseElement):

@@ -1,7 +1,7 @@
 import unittest
 import pytest
 
-from support.factory import start_driver, maximize_browser, close_all_browsers, navigate
+from core.support.factory import start_driver, maximize_browser, close_all_browsers, navigate
 
 
 class TestBase(unittest.TestCase):
