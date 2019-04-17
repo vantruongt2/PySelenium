@@ -25,8 +25,8 @@ def quit_all_browsers():
     factory.quit_all_browsers()
 
 
-def start_driver(name):
-    factory.start_driver(name)
+def start_driver(name, key="default"):
+    factory.start_driver(name, key)
 
 
 def driver():
