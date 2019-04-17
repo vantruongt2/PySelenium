@@ -3,7 +3,7 @@ import time
 from selenium.common.exceptions import TimeoutException
 
 
-def wait_for(entity, condition, timeout=4, polling=0.1):    
+def wait_for(entity, condition, timeout=5, polling=0.1):    
     end_time = time.time() + timeout
     while True:
         try:
@@ -32,4 +32,4 @@ def wait_for(entity, condition, timeout=4, polling=0.1):
                     reason=reason_string), screen, stacktrace)
 
             time.sleep(polling)
-
+            

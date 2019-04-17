@@ -26,3 +26,24 @@ class Title(WebDriverCondition):
 
 
 title = Title
+
+
+class ElementCondition():
+
+    def description(self):
+        return self.__class__.__name__
+
+    @abstractmethod
+    def fn(self, webelement):
+        pass
+
+
+class Visible(ElementCondition):
+
+    def fn(self, element):
+        if not element.is_displayed():
+            raise ConditionMismatchException()
+        return element
+
+
+visible = Visible()
