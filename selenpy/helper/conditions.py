@@ -1,4 +1,5 @@
 from selenpy.helper.exceptions import ConditionMismatchException
+from abc import abstractmethod
 
 
 class WebDriverCondition():
@@ -22,5 +23,6 @@ class Title(WebDriverCondition):
             raise ConditionMismatchException(
                 expected=self.expected,
                 actual=actual)
+
 
 title = Title

@@ -1,6 +1,8 @@
 import os
 
 from selenpy.support import factory
+from selenpy.common import config
+from selenpy.helper.wait import wait_for
 
 
 def maximize_browser():
@@ -30,10 +32,11 @@ def start_driver(name):
 def driver():
     return factory.get_shared_driver()
 
+
 def wait_until(webdriver_condition, timeout=None, polling=None):
     if timeout is None:
-        timeout = selene.config.timeout
+        timeout = config.timeout
     if polling is None:
-        polling = selene.config.poll_during_waits
+        polling = config.poll_during_waits
 
     return wait_for(driver(), webdriver_condition, timeout, polling)

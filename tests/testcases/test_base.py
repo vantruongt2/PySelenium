@@ -2,7 +2,7 @@ import unittest
 import pytest
 
 from selenpy.support import browser
-
+from selenpy.support.conditions import have
 
 class TestBase(unittest.TestCase):
     
@@ -10,7 +10,8 @@ class TestBase(unittest.TestCase):
     def setup(self):        
         browser.start_driver("chrome")
         browser.maximize_browser()
-        browser.open_url("https://google.com")    
+        browser.open_url("https://google.com")
+        browser.wait_until(have.title("Google"))
         
         # Close all browsers when tests have been finished
         yield        

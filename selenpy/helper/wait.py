@@ -33,10 +33,3 @@ def wait_for(entity, condition, timeout=4, polling=0.1):
 
             time.sleep(polling)
 
-
-def satisfied(entity, condition):
-    try:
-        value = condition(entity)
-        return value if value is not None else False
-    except Exception as exc:
-        return False
