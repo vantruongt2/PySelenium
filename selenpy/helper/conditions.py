@@ -47,3 +47,16 @@ class Visible(ElementCondition):
 
 
 visible = Visible()
+
+
+class Value(ElementCondition):
+    
+    def __init__(self, exact_value):
+        self.expected = exact_value
+
+    def fn(self, element):
+        actual = element.get_attribute("value")
+        if not self.expected == actual:
+            raise ConditionMismatchException(
+                expected=self.expected,
+                actual=actual)
