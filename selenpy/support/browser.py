@@ -3,6 +3,7 @@ import os
 from selenpy.support import factory
 from selenpy.common import config
 from selenpy.helper.wait import wait_for
+import logging
 
 
 def maximize_browser():
@@ -25,8 +26,8 @@ def quit_all_browsers():
     factory.quit_all_browsers()
 
 
-def start_driver(name, key="default"):
-    factory.start_driver(name, key)
+def start_driver(name, remote_host, key="default"):
+    factory.start_driver(name, remote_host, key)
 
 
 def driver():
