@@ -2,3 +2,5 @@
 </br>1. Install Python 3.7 and Pip
 </br>2. Install dependencies: pip install requirement.txt
 </br>3. Eclipse with pydev
+</br>4. Add PYTHON_HOME env
+</br>4. Add %PYTHON_HOME%\Lib; %PYTHON_HOME%; %PYTHON_HOME%\Scripts to Path
