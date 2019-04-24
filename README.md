@@ -1,3 +1,3 @@
 # PySelenium
-Install Python 3.7 and Pip
-Install dependencies via Pip: pip install requirement.txt
+</br>Install Python 3.7 and Pip
+</br>Install dependencies: pip install requirement.txt
