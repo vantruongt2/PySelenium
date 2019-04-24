@@ -4,3 +4,5 @@
 </br>3. Eclipse with pydev
 </br>4. Add PYTHON_HOME env
 </br>5. Add %PYTHON_HOME%\Lib; %PYTHON_HOME%; %PYTHON_HOME%\Scripts to Path
+</br>6. Import project File -> Open Projects From File System
+</br>7. Select Window -> Preference -> PyDev -> PyUnit -> Select Py.test runner as Test Runner
