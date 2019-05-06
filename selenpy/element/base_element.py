@@ -4,8 +4,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenpy.common import config
 from selenpy.helper.wait import wait_for
-from pywinauto.findwindows import find_element
-
 
 class BaseElement():
     __locator = None
@@ -77,13 +75,13 @@ class BaseElement():
         return WebDriverWait(self._driver, config.timeout).until(EC.presence_of_element_located((By.CLASS_NAME, criteria)))        
     
     def is_displayed(self, timeout=None):
-        return self.wait_for_visible(timeout)
-    
+        return self.find_element().is_displayed()
+        
     def is_enabled(self):
-        return find_element().is_enabled()
+        return self.find_element().is_enabled()
     
     def is_selected(self):
-        return find_element().is_selected()
+        return self.find_element().is_selected()
    
     def wait_for_visible(self, timeout=None):
         if timeout == None: timeout = config.timeout            
@@ -102,3 +100,6 @@ class BaseElement():
             polling = config.poll_during_waits
     
         return wait_for(self.find_element(), element_condition, timeout, polling)
+
+    def set_dynamic_value(self,dynamic):
+        return self.__locator.format(dynamic)

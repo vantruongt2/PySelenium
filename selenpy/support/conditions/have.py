@@ -9,3 +9,8 @@ def title(exact_value):
 # *** Web Element conditions ***
 def value(exact_value):
     return conditions.Value(exact_value)
+
+
+# *** Web Element conditions ***
+def contains_title(value):
+    return conditions.ContainsTitle(value)
