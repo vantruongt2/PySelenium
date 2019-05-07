@@ -41,14 +41,3 @@ class ComboBox(BaseElement):
         for o in self._select.options:
             ops.append(o.text)
         return ops
-
-    def select_dynamic_menu(self, dynamic_menu):
-        self.move_to()
-        items = dynamic_menu.split(">")
-        for item in items:
-            menu_item = BaseElement("//a[text()='%s']")
-            menu_item.format(item)
-            if item == items[-1]: 
-                menu_item.click()
-            else:
-                menu_item.move_to()
