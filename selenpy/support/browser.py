@@ -2,6 +2,10 @@
 from selenpy.support import factory
 from selenpy.common import config
 from selenpy.helper.wait import wait_for
+import logging
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import UnexpectedAlertPresentException
 
 
 def get_driver():
@@ -30,6 +34,7 @@ def quit_all_browsers():
 
 def start_driver(name, remote_host, key="default"):
     factory.start_driver(name, remote_host, key)
+
     
 def select_main_window():
     handles = get_driver().window_handles
@@ -43,3 +48,17 @@ def wait_until(webdriver_condition, timeout=None, polling=None):
         polling = config.poll_during_waits
 
     return wait_for(get_driver(), webdriver_condition, timeout, polling)
+
+
+def get_alert():
+    try:
+        WebDriverWait(get_driver(), config.timeout).until(EC.alert_is_present())
+        return get_driver().switch_to.alert
+    except UnexpectedAlertPresentException:
+        logging.info("no alert")
+        return None
+
+
+def close_alert():
+    if get_alert() is not None:
+        get_alert().dismiss()

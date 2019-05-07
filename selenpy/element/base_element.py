@@ -107,7 +107,7 @@ class BaseElement():
             
     def is_displayed(self, timeout=None):
         try:
-            return self.wait_for_visible(timeout)
+            return self.wait_for_visible(timeout) is not None
         except TimeoutException:
             return False
     
