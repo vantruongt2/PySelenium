@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenpy.common import config
 from selenpy.helper.wait import wait_for
 from selenpy.support.conditions import be
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class BaseElement():
@@ -134,3 +135,7 @@ class BaseElement():
             polling = config.poll_during_waits
     
         return wait_for(self.find_element(), element_condition, timeout, polling)
+
+    def move_to(self):
+        action = ActionChains(self._driver)
+        action.move_to_element(self.find_element()).perform()
