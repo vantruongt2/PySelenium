@@ -1,11 +1,10 @@
-import unittest
 import pytest
 
 from selenpy.support import browser
 import logging
 
 
-class TestBase(unittest.TestCase):
+class TestBase():
 
     @pytest.fixture(scope="session", autouse=True)
     def setup(self):

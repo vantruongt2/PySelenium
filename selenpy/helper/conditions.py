@@ -1,5 +1,6 @@
 from selenpy.helper.exceptions import ConditionMismatchException
 from abc import abstractmethod
+import re
 
 
 class WebDriverCondition():
@@ -17,9 +18,11 @@ class Title(WebDriverCondition):
     def __init__(self, exact_value):
         self.expected = exact_value
 
-    def fn(self, webdriver):        
+    def fn(self, webdriver):
         actual = webdriver.title
-        if not self.expected == actual:
+        result = re.search(self.expected, actual)
+        # if not self.expected == actual:
+        if result == None:
             raise ConditionMismatchException(
                 expected=self.expected,
                 actual=actual)
@@ -61,7 +64,7 @@ enabled = Enabled()
 
 
 class Value(ElementCondition):
-    
+
     def __init__(self, exact_value):
         self.expected = exact_value
 
