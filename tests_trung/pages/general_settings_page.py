@@ -28,14 +28,12 @@ class GeneralSettingPage(GeneralPage):
 
     def enter_profile_information(self, name, item_type = None, related_data = None):
         self._txt_name.wait_for_visible()
+        self._txt_name.clear()
         self._txt_name.send_keys(name)
         if item_type is not None:
             self._cbb_item_type.select_by_text_contains(item_type)
         if related_data is not None:
             self._cbb_related_data.select_by_text_contains(related_data)
 
-    def add_new_profile(self, name, item_type = None, related_data = None):
-        self.enter_profile_information(name, item_type, related_data)
-        self.finish()
-
-#     def delete_profile(self, name):
+    def get_item_type_options(self):
+        return self._cbb_item_type.get_options()

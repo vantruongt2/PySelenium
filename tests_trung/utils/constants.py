@@ -1,7 +1,7 @@
 # site constants
 DATE_FORMAT = "%Y-%b-%d"
 ROOT_PAGE = "Overview"
-INVALID_STRING = "/:*?<>\"#[ ]{}=%;"
+SPECIAL_STRING = "/:*?<>\"#[ ]{}=%;"
 DEFAULT_PAGE_TITLE = "Execution Dashboard"
 
 # timeout
