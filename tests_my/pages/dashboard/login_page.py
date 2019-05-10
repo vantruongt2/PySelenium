@@ -1,7 +1,7 @@
-from selenpy.element.text_box import TextBox
 from selenpy.element.base_element import BaseElement
 from selenpy.element.combo_box import ComboBox
 from tests_my.testcases.utils import constants
+from tests_my.pages.controls.text_box import TextBox
 
 
 class LoginPage():

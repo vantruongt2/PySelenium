@@ -1,8 +1,8 @@
 from tests_my.testcases.utils import constants, browser_helper
 from selenpy.element.base_element import BaseElement
-from selenpy.element.text_box import TextBox
 from selenpy.element.combo_box import ComboBox
 from selenpy.element.check_box import CheckBox
+from tests_my.pages.controls.text_box import TextBox
 
 
 class DashboardPage():
@@ -30,8 +30,6 @@ class DashboardPage():
         if self._dashboard.is_displayed():
             self._lbl_user_menu.click()
             self._lbl_logout.click()
-        else:
-            pass
 
     def get_message(self):
         browser_helper.get_alert_text()
@@ -62,7 +60,6 @@ class DashboardPage():
     def fill_page_info(self, namepage, parentpage=None, numbercolumns=None, displayafter=None, public=None):
         self._lbl_pop_up.wait_for_visible()
         self._txt_name_page.wait_for_visible()
-        self._txt_name_page.find_element().clear()
         self._txt_name_page.send_keys(namepage)
         if parentpage is not None:
             self._cbb_parent_page.select_by_text_contains(parentpage)
