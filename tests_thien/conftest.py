@@ -1,9 +1,16 @@
+from tests_thien.utilities import constant
 import pytest
+import os
 
 
 def pytest_addoption(parser):
     parser.addoption("--remote-host", action="store", help="Remote server for execution. http://127.0.0.1:4444/wd/hub", metavar="")
     parser.addoption("--driver", action="store", help="Configure the driver that you want to execute the tests. It should be: chrome, firefox", metavar="")
+    parser.addoption("--url", action="store",default=constant.DA_URL , help="target machine url")
+
+
+def pytest_configure(config):
+    os.environ["url"] = config.getoption("url") 
 
 
 @pytest.fixture(scope="session", autouse=True)
