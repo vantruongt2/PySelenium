@@ -1,9 +1,8 @@
 from selenpy.element.base_element import BaseElement
 from selenpy.element.text_box import TextBox
 from selenpy.element.combo_box import ComboBox
-from selenpy.element.check_box import CheckBox
-from selenpy.support import browser
 from tests_phi.utils.constants import SHORT_TIME
+from tests_phi.utils import browser_helper
 
 class DashboardPage():
 
@@ -16,29 +15,30 @@ class DashboardPage():
         self._cbb_parent_name = ComboBox("id=parent")
         self._cbb_num_of_column = ComboBox("id=columnnumber")
         self._cbb_display_after = ComboBox("id=afterpage")
-        self._cb_public = CheckBox("id=ispublic")
+        self._cb_public = BaseElement("id=ispublic")
         self._btn_dynamic_on_add_edit_new_page = BaseElement("//input[@class='button page_button' and @id='%s']")
         self._lbl_test_module_execution = BaseElement("//div[@title='Test Module Execution']")
         self._lbl_dynamic_global_setting_item = BaseElement("//li[@class='mn-setting']//a[text()='%s']")
         self._lbl_dynamic_label = BaseElement("//a[text()='%s']")
+        self._lbl_administer_user = BaseElement("//a[@href='#Administer']")
 
     def logout(self):
         self._lbl_welcome_user.wait_for_visible()
-        self._lbl_welcome_user.click()
+        self._lbl_welcome_user.move_to()
         self._lbl_logout.wait_for_visible()
         self._lbl_logout.click()
         self._lbl_welcome_user.wait_for_invisible()
 
     def add_page(self, page_name, parent_page = "Overview", success=True):
         self.select_global_selecting_item("Add Page")
-        self.enter_page_info(page_name, parent_page)
+        self.fill_page_info(page_name, parent_page)
         self.submit_modal()
         if success:
             self._txt_page_name.wait_for_invisible()
         
     def edit_page(self,page_name, parent_page = "Overview", success=True):
         self.select_global_selecting_item("Edit")
-        self.enter_page_info(page_name, parent_page)
+        self.fill_page_info(page_name, parent_page)
         self.submit_modal()
         if success:
             self._txt_page_name.wait_for_invisible()
@@ -54,9 +54,9 @@ class DashboardPage():
             self._btn_dynamic_on_add_edit_new_page.click()
         self._btn_dynamic_on_add_edit_new_page.wait_for_invisible()
         
-    def enter_page_info(self,page_name, parent_page = "Overview"):
+    def fill_page_info(self,page_name, parent_page = "Overview"):
         self._txt_page_name.wait_for_visible()
-        self._txt_page_name.find_element().clear()
+        self._txt_page_name.clear()
         self._txt_page_name.send_keys(page_name)
         self._cbb_parent_name.wait_for_visible()
         self._cbb_parent_name.select_by_text_contains(parent_page)
@@ -80,5 +80,12 @@ class DashboardPage():
     def delete_page(self, page_name):
         self.open_page(*page_name)
         self.select_global_selecting_item("Delete")
-        browser.get_alert().accept()
+        browser_helper.accept_alert()
         self._lbl_test_module_execution.wait_for_visible()
+
+    def click_administer_item(self, item):
+        self._lbl_administer_user.wait_for_visible()
+        self._lbl_administer_user.move_to()
+        self._lbl_dynamic_label.format(item)
+        self._lbl_dynamic_label.wait_for_visible()
+        self._lbl_dynamic_label.click()

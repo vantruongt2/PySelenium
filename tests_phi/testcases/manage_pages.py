@@ -78,7 +78,7 @@ class Test_ManagePage(TestBase):
           
         logging.info("3. Add other page with the same name with page 1")
         self.dashboard_page.select_global_selecting_item("Add Page")
-        self.dashboard_page.enter_page_info(page_name_1)
+        self.dashboard_page.fill_page_info(page_name_1)
         self.dashboard_page.submit_modal()
           
         logging.info("VP: '%s' message displays"% constants.EXISTING_PAGE_NAME_MESSAGE)

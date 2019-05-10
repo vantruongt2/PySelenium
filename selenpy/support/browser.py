@@ -5,7 +5,7 @@ from selenpy.helper.wait import wait_for
 import logging
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import UnexpectedAlertPresentException
+from selenium.common.exceptions import TimeoutException
 
 
 def get_driver():
@@ -54,8 +54,8 @@ def get_alert():
     try:
         WebDriverWait(get_driver(), config.timeout).until(EC.alert_is_present())
         return get_driver().switch_to.alert
-    except UnexpectedAlertPresentException:
-        logging.info("no alert")
+    except TimeoutException:
+        logging.info("No  alert")
         return None
 
 

@@ -11,3 +11,6 @@ def get_alert_text():
     
 def dismiss_alert():
     browser.close_alert()
+
+def accept_alert():
+    browser.get_alert().accept()
