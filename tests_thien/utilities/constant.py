@@ -17,4 +17,4 @@ WAIT_LONG = 20
 
 # message
 MSG_LOGIN_FAIL = "Username or password is invalid"
-MSG_DUP_PAGE_NAME = "%s already exists. Please enter a different name."
+MSG_DUP_PAGE_NAME = "{} already exists. Please enter a different name."

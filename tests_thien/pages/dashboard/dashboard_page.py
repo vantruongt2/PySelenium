@@ -12,6 +12,7 @@ class DashboardPage():
         self._txt_page_name = TextBox("id=name")
         self._cbb_parent_name = ComboBox("id=parent")
         self._btn_ok = BaseElement("id=OK")
+        self._btn_cancel = BaseElement("id=Cancel")
         self._lbl_test_module_execution = BaseElement("//div[@title='Test Module Execution']")
         self._link_page_item= BaseElement("//div[@id='main-menu']//a[text()='%s']")
         self._item_menu = BaseElement("//a[text()='%s']")
@@ -45,6 +46,10 @@ class DashboardPage():
         self._txt_page_name.send_keys(page_name)
         if parent_name is not None:
             self._cbb_parent_name.select_by_text_contains(parent_name)
+    
+    def dismiss_modal(self):
+        self._btn_cancel.wait_for_visible()
+        self._btn_cancel.click()
     
     def create_new_page(self, page_name, parent_name=constant.ROOT_PAGE, success=True):
         self.select_global_setting(SettingsList.ADD_PAGE.value)
