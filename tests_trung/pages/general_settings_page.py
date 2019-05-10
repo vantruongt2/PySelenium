@@ -26,7 +26,7 @@ class GeneralSettingPage(GeneralPage):
         self._btn_cancel.wait_for_visible()
         self._btn_cancel.click()
 
-    def enter_profile_information(self, name, item_type = None, related_data = None):
+    def fill_profile_information(self, name, item_type = None, related_data = None):
         self._txt_name.wait_for_visible()
         self._txt_name.clear()
         self._txt_name.send_keys(name)

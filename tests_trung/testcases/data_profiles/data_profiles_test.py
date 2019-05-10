@@ -53,7 +53,7 @@ class Test_data_profiles(TestBase):
     @pytest.mark.parametrize("name_profile,alert_message", testdata)
     def test_invalid_profile_name(self, name_profile, alert_message):
         logging.info("1. Enter invalid data")
-        self.general_settings_page.enter_profile_information(name_profile)
+        self.general_settings_page.fill_profile_information(name_profile)
 
         logging.info("2. Click on 'Next Button'")
         self.general_settings_page.next()
