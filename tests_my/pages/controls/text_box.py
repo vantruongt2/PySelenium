@@ -11,4 +11,4 @@ class TextBox(BaseElement):
 
     def send_keys(self, *value):
         self.clear()
-        BaseElement.send_keys(self, *value)
+        super().send_keys(*value)

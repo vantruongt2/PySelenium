@@ -11,18 +11,18 @@ class Test_Login(TestBase):
     login_page = LoginPage()
     dashboard_page = DashboardPage()
 
+    testdata = [
+        ("abc", "abc", constants.LOGIN_ERROR_MESSAGE),
+        ("administrator", "abc", constants.LOGIN_ERROR_MESSAGE),
+    ]
+
     def test_login_001(self, clean_up_001):
 
         logging.info("Login with valid username and password")
         self.login_page.login(constants.USER_NAME, constants.PASSWORD)
 
         logging.info("Verify dashboad is displayed successfully")
-        assert self.dashboard_page.is_At()
-
-    testdata = [
-        ("abc", "abc", constants.LOGIN_ERROR_MESSAGE),
-        ("administrator", "abc", constants.LOGIN_ERROR_MESSAGE),
-    ]
+        assert self.dashboard_page.is_at()
 
     @pytest.mark.parametrize("username,password,expected", testdata)
     def test_login_002(self, username, password, expected, clean_up_002):
