@@ -64,7 +64,6 @@ class BaseElement():
         element.click()
         
     def send_keys(self, *value):
-        self.find_element().clear()
         self.find_element().send_keys(value)
     
     def __parse_locator(self, locator):

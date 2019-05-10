@@ -1,22 +1,17 @@
-from selenpy.support import browser
 from tests_my.pages.dashboard.login_page import LoginPage
 from tests_my.testcases.test_base import TestBase
-from tests_my.testcases.utils import constants, common
+from tests_my.testcases.utils import constants, browser_helper
 import pytest
 from tests_my.pages.dashboard.dashboard_page import DashboardPage
 import logging
+
 
 class Test_Login(TestBase):
 
     login_page = LoginPage()
     dashboard_page = DashboardPage()
 
-    @pytest.fixture()
-    def setup_class(self):
-        yield
-        self.dashboard_page.log_out()
-
-    def test_login_001(self, setup_class):
+    def test_login_001(self, clean_up_001):
 
         logging.info("Login with valid username and password")
         self.login_page.login(constants.USER_NAME, constants.PASSWORD)
@@ -30,11 +25,20 @@ class Test_Login(TestBase):
     ]
 
     @pytest.mark.parametrize("username,password,expected", testdata)
-    def test_login_002(self, username, password, expected):
+    def test_login_002(self, username, password, expected, clean_up_002):
 
-        logging.info("Login with invalid username: "+username+ " and password: "+password)
+        logging.info("Login with invalid username: " + username + " and password: " + password)
         self.login_page.login(username, password)
 
         logging.info("Verify error message is displayed")
-        assert common.get_alert_text() == expected
-        browser.close_alert()
+        assert browser_helper.get_alert_text() == expected
+
+    @pytest.fixture()
+    def clean_up_001(self):
+        yield
+        self.dashboard_page.log_out()
+
+    @pytest.fixture()
+    def clean_up_002(self):
+        yield
+        browser_helper.dismiss_alert()
