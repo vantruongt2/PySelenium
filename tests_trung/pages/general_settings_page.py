@@ -30,9 +30,9 @@ class GeneralSettingPage(GeneralPage):
         self._txt_name.wait_for_visible()
         self._txt_name.clear()
         self._txt_name.send_keys(name)
-        if item_type is not None:
+        if item_type is not None and item_type is not "":
             self._cbb_item_type.select_by_text_contains(item_type)
-        if related_data is not None:
+        if related_data is not None and related_data is not "":
             self._cbb_related_data.select_by_text_contains(related_data)
 
     def get_item_type_options(self):
